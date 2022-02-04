@@ -10,7 +10,6 @@ const BlogCard = ({ title, id, publishedAt, body }) => {
   const dispatch = useDispatch();
   let blogs = useSelector((state) => state.blogs.blogs);
   const [isOpen, setIsOpen] = useState(false);
-  const [deleteOpen, setDeleteOpen] = useState(false);
   let { deleteBlog, getAllBlogs } = bindActionCreators(AC, dispatch);
 
   let selectedBlog = { title, id, publishedAt, body };

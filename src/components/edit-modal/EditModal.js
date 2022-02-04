@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 //Modal shows a msg and DONE btn
 export function EditModal({ isOpen, toggleModal, selectedBlog }) {
   const dispatch = useDispatch();
-
+  const [submitError, setSubmitError] = useState(false);
   let { updateBlog, getAllBlogs } = bindActionCreators(AC, dispatch);
   let blogs = useSelector((state) => state.blogs.blogs);
 
@@ -49,8 +49,12 @@ export function EditModal({ isOpen, toggleModal, selectedBlog }) {
     setBlog({ ...blog, body: e.target.value });
   };
   const handleUpdateBlog = async () => {
-    await updateBlog(blog, blogs);
-    await getAllBlogs();
+    if (!blog.title || !blog.body) {
+      setSubmitError(true);
+    } else {
+      await updateBlog(blog, blogs);
+      await getAllBlogs();
+    }
   };
 
   return (
@@ -72,6 +76,11 @@ export function EditModal({ isOpen, toggleModal, selectedBlog }) {
             onChange={(e) => handleBodyChange(e)}
             className="main__modal__action-taken-box__body"
           ></textarea>
+          {submitError && (
+            <span className="form-container__error">
+              Please add blog data correctly!
+            </span>
+          )}
           <div className="main__modal__action-taken-box__controlls">
             <button onClick={() => handleUpdateBlog()}>Save</button>
             <button onClick={() => handleClose()}>Cancel</button>
