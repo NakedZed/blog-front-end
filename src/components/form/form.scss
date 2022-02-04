@@ -14,12 +14,14 @@
         text-align: center;
     }
     &__title {
-        @include centerItem($width:40%);
+        @include centerItem($width:45%);
         margin-bottom: 1%;
+        height:45px
+        
     }
 
     &__body {
-        @include centerItem($width:80%);
+        @include centerItem($width:45%);
         max-height:200px;
         max-width: 80%;
         height:100px;
