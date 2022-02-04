@@ -16,8 +16,12 @@ const BlogCard = ({ title, id, publishedAt, body }) => {
   let selectedBlog = { title, id, publishedAt, body };
 
   const handleDeleteBlog = async (id) => {
-    await deleteBlog(id, blogs);
-    await getAllBlogs();
+    if (confirm('Are you sure you want to proceed?')) {
+      await deleteBlog(id, blogs);
+      await getAllBlogs();
+    } else {
+      return;
+    }
   };
 
   const handleSeeMore = () => {
