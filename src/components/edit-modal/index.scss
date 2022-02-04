@@ -1,0 +1,35 @@
+.main {
+  &__modal {
+    background-color: transparent !important;
+    &__action-taken-box {
+      width: 450px;
+      min-height: 100px;
+      padding:10px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      &__header{
+        text-align: center;
+        color: red;
+        
+        
+      }
+      &__body{
+          margin-top:10px;
+         
+      }
+      &__controlls{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top:30px;
+        place-content: space-evenly;
+        button{
+          font-weight: bold;
+          padding:7px
+        }
+      }
+    }
+  }
+}
+
